@@ -43,7 +43,7 @@ color: #666;
     min-width: 1.6em;
 }
 
-#previus-operations,{
+#previus-operations{
     color: #777;
 }
 
@@ -53,3 +53,35 @@ color: #666;
     /* weight seria o contorno*/
 }
 
+#buttons-container {
+    display: grid;
+    /* fraciona as colunas */
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 3px;   
+} 
+
+#buttons-container button {
+    border: 1px solid transparent;
+    border-radius: 0;
+    height: 4em;
+    background-color: #dbdbdb ;
+    cursor: pointer;
+}
+
+#buttons-container .number {
+    background-color: #f3f3f3;
+}
+
+#buttons-container button:hover{
+    background-color: #bababa;
+    border-color: #999;
+}
+
+#buttons-container #equal-btn {
+    grid-column: span 2;
+    background-color: #75a5cb;
+}
+
+#buttons-container #equal-btn:hover {
+    background-color: #3a91d8;
+}
