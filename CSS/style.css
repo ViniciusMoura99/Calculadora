@@ -1,5 +1,5 @@
 /* usar o * faz com que todos os elemntos obedeçam essa regra */
-*{
+* {
     margin: 0;
     padding: 0;
     /* faz com que nao saia do padrao da tela */
@@ -27,12 +27,29 @@ body{
 #calc h3 {
 font-size: .8em;
 font-weight: 300;
-color: aliceblue;
+color: #666;
 
 }
 
 #operations {
-
     text-align: right;
-
 }
+
+#previus-operations,
+#current-operations{  
+    padding: 0.2em;
+    overflow-wrap: break-word;
+    /*overflow-wrap: break-word; ele quebra a linha para se o valor/string exceder ele nao sai do meu bicinho*/
+    min-width: 1.6em;
+}
+
+#previus-operations,{
+    color: #777;
+}
+
+#current-operations{
+    font-size: 3em;
+    font-weight: 700;
+    /* weight seria o contorno*/
+}
+
