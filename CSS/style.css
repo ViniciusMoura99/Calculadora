@@ -15,8 +15,13 @@ body{
     padding: 3em;
 }
 
+/* testezinho hihi
+h1 {
+    text-align: right;
+} */
+
 #calc {
-    width: 400px;
+    width: 350px;
     padding: .5em;
     background-color: #c4c4c4;
     color:#000;
@@ -28,26 +33,25 @@ body{
 font-size: .8em;
 font-weight: 300;
 color: #666;
-
 }
 
 #operations {
     text-align: right;
 }
 
-#previus-operations,
-#current-operations{  
-    padding: 0.2em;
+#previous-operation,
+#current-operation { 
+    min-width: 1.6em; 
+    padding: 0.6em;
     overflow-wrap: break-word;
     /*overflow-wrap: break-word; ele quebra a linha para se o valor/string exceder ele nao sai do meu bicinho*/
-    min-width: 1.6em;
 }
 
-#previus-operations{
+#previous-operation{
     color: #777;
 }
 
-#current-operations{
+#current-operation{
     font-size: 3em;
     font-weight: 700;
     /* weight seria o contorno*/
