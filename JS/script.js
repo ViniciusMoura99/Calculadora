@@ -17,7 +17,11 @@ class Calculator {
     }
     // adiciona o digito da calc 
     addDigit(digit) {
-        // console.log(digit); teste
+        // checkar se tem ponto ou não
+    if(digit === "." && this.currentOperationText.innerText.includes(".")){
+        return;
+    }
+        // console.log(digit);
         this.currentOperation = digit;
         this.updateScreen();
     }
@@ -25,7 +29,7 @@ class Calculator {
     // Muda o valores da calc
     updateScreen() {
         // os n° da operação atual dentro do TEXTO da operação atual
-        this.currentOperation.innerText += this.currentOperation;
+        this.currentOperationText.innerText += this.currentOperation;
     }
 }
 
@@ -43,10 +47,9 @@ buttons.forEach((btn) => {
         pois ele tem que ser número ou caractere
         basicamente: o if vai verificar se o value é n° ou caractere*/
         if(+value >= 0 || value === ".") {
-            console.log(value);
+            calc.addDigit(value);
         } else {
             console.log("op:" + value);
         }
-
     });
 });
