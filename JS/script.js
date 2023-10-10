@@ -26,11 +26,76 @@ class Calculator {
         this.updateScreen();
     }
 
-    // Muda o valores da calc
-    updateScreen() {
-        // os n° da operação atual dentro do TEXTO da operação atual
-        this.currentOperationText.innerText += this.currentOperation;
+    // processar todas as operações
+    processOperation(operation) {
+        console.log(operation);   
+
+        // checkar se o valor atual é vazio
+        if(this.currentOperationText.innerText === ""){
+            if(this.previousOperationText.innerText !== ""){ //mudat a opreção
+                this.changeOperation(operation);
+            }
+            return;
+        }
+
+
+    
+    // let declara a variável,, this para referenciar objeto ou instancia,, innerText fala com op HTML
+    let operationValue;
+    const previous = +this.previousOperationText.innerText.split(" ")[0];
+    const current = +this.currentOperationText.innerText; // pegar o valor atual e o anterior
+
+    switch(operation){
+        case "+":
+            operationValue = previous + current
+            this.updateScreen(operationValue, operation, previous, current);
+            break;
+        case "-":
+            operationValue = previous - current
+            this.updateScreen(operationValue, operation, previous, current);
+            break;
+        case "*":
+            operationValue = previous * current
+            this.updateScreen(operationValue, operation, previous, current);
+            break;
+        case "/":
+            operationValue = previous / current
+            this.updateScreen(operationValue, operation, previous, current);
+            break;
+        default:
+            return;
     }
+
+    }
+
+    // Muda o valores da calc
+    updateScreen(
+        operationValue = null, // resultado de algo do meu swtich
+        operation = null, // oq o usuário envia quando acessa o método processOperation
+        current = null, // resultado das minhas declarações 
+        previous = null
+    ){
+        console.log(operationValue, operation, previous, current);
+        if(operationValue === null){ 
+            this.currentOperationText.innerText += this.currentOperation; // os números da operação atual dentro do TEXTO da operação atual
+    }      else { // checkar se o valor é zero
+        if(previous === 0){
+            operationValue = current;
+        }
+        // add o valor para o anterior value
+        this.previousOperationText.innerText = `${operationValue} ${operation}`; // incorpora valores dentro de uma string, no caso pra subir o previousValue na caluladora de fato 
+        this.currentOperationText.innerText = "";
+    }
+}
+// mudar o operador
+changeOperation(operation){
+    const mathOperations = ["*", "/", "+", "-"]
+    
+    if(!mathOperations.includes(operation)){
+        return;
+    }
+    this.previousOperationText.innerText = this.previousOperationText.innerText.slice(0, -1) + operation;
+}
 }
 
 const calc = new Calculator (previousOperationText, currentOperationText);
@@ -49,7 +114,7 @@ buttons.forEach((btn) => {
         if(+value >= 0 || value === ".") {
             calc.addDigit(value);
         } else {
-            console.log("op:" + value);
+            calc.processOperation(value);
         }
     });
 });
