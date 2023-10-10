@@ -49,28 +49,31 @@ class Calculator {
     switch(operation){
         case "+":
             operationValue = previous + current
-            this.updateScreen(operationValue, operation, previous, current);
+            this.updateScreen(operationValue, operation, current, previous);
             break;
         case "-":
             operationValue = previous - current
-            this.updateScreen(operationValue, operation, previous, current);
+            this.updateScreen(operationValue, operation, current, previous);
             break;
         case "*":
             operationValue = previous * current
-            this.updateScreen(operationValue, operation, previous, current);
+            this.updateScreen(operationValue, operation, current, previous);
             break;
         case "/":
             operationValue = previous / current
-            this.updateScreen(operationValue, operation, previous, current);
+            this.updateScreen(operationValue, operation, current, previous);
             break;
         case "DEL":
-            this.processDelOperator(current);
+            this.processDelOperator();
             break;
         case "CE":
-            this.processClearOperation(current);
+            this.processClearOperation();
             break;
         case "C":
-            this.processClearAllOperation(current);
+            this.processClearAllOperation();
+            break;
+        case "=":
+            this.processEqualOperation();
             break;
         default:
             return;
@@ -123,8 +126,12 @@ changeOperation(operation){
     processClearAllOperation(){
         this.currentOperationText.innerText ="";
         this.previousOperationText.innerText =""; 
-
 }
+// mostrar o resultado atual 
+    processEqualOperation(){
+        const operation = previousOperationText.innerText.split("")[1];
+        this.processOperation(operation);
+    }
 
 }
 
