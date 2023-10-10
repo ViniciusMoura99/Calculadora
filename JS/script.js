@@ -62,6 +62,9 @@ class Calculator {
             operationValue = previous / current
             this.updateScreen(operationValue, operation, previous, current);
             break;
+        case "DEL":
+            this.processDelOperator(current);
+            break;
         default:
             return;
     }
@@ -94,8 +97,17 @@ changeOperation(operation){
     if(!mathOperations.includes(operation)){
         return;
     }
-    this.previousOperationText.innerText = this.previousOperationText.innerText.slice(0, -1) + operation;
+
+    this.previousOperationText.innerText =
+     this.previousOperationText.innerText.slice(0, -1) + operation;
 }
+
+//deletar o ultimo digito
+    processDelOperator(){ 
+    this.currentOperationText.innerText = 
+     this.currentOperationText.innerText.slice(0, -1);
+    }
+
 }
 
 const calc = new Calculator (previousOperationText, currentOperationText);
