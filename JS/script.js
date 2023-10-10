@@ -31,8 +31,9 @@ class Calculator {
         console.log(operation);   
 
         // checkar se o valor atual é vazio
-        if(this.currentOperationText.innerText === ""){
-            if(this.previousOperationText.innerText !== ""){ //mudat a opreção
+        if(this.currentOperationText.innerText === "" && operation !== "C"){
+            //muda a opreção
+            if(this.previousOperationText.innerText !== ""){ 
                 this.changeOperation(operation);
             }
             return;
