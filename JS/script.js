@@ -65,6 +65,12 @@ class Calculator {
         case "DEL":
             this.processDelOperator(current);
             break;
+        case "CE":
+            this.processClearOperation(current);
+            break;
+        case "C":
+            this.processClearAllOperation(current);
+            break;
         default:
             return;
     }
@@ -104,9 +110,20 @@ changeOperation(operation){
 
 //deletar o ultimo digito
     processDelOperator(){ 
-    this.currentOperationText.innerText = 
-     this.currentOperationText.innerText.slice(0, -1);
+        this.currentOperationText.innerText = 
+        this.currentOperationText.innerText.slice(0, -1);
     }
+
+//Apagar meu valor atual
+    processClearOperation(){
+        this.currentOperationText.innerText = "";
+}
+//Apagar tudo 
+    processClearAllOperation(){
+        this.currentOperationText.innerText ="";
+        this.previousOperationText.innerText =""; 
+
+}
 
 }
 
