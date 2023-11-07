@@ -28,19 +28,17 @@ class Calculator {
 
     // processar todas as operações
     processOperation(operation) {
-        console.log(operation);   
+        //console.log(operation);   
 
         // checkar se o valor atual é vazio
         if(this.currentOperationText.innerText === "" && operation !== "C"){
             //muda a opreção
-            if(this.previousOperationText.innerText !== ""){ 
+            if(this.previousOperationText.innerText !== "") { 
                 this.changeOperation(operation);
             }
             return;
         }
 
-
-    
     // let declara a variável,, this para referenciar objeto ou instancia,, innerText fala com op HTML
     let operationValue;
     const previous = +this.previousOperationText.innerText.split(" ")[0];
@@ -67,19 +65,18 @@ class Calculator {
             this.processDelOperator();
             break;
         case "CE":
-            this.processClearOperation();
+            this.processClearOperator();
             break;
         case "C":
-            this.processClearAllOperation();
+            this.processClearAllOperator();
             break;
         case "=":
-            this.processEqualOperation();
+            this.processEqualOperator();
             break;
         default:
             return;
     }
-
-    }
+}
 
     // Muda o valores da calc
     updateScreen(
@@ -88,7 +85,7 @@ class Calculator {
         current = null, // resultado das minhas declarações 
         previous = null
     ){
-        console.log(operationValue, operation, previous, current);
+        //console.log(operationValue, operation, previous, current);
         if(operationValue === null){ 
             this.currentOperationText.innerText += this.currentOperation; // os números da operação atual dentro do TEXTO da operação atual
     }      else { // checkar se o valor é zero
@@ -119,17 +116,18 @@ changeOperation(operation){
     }
 
 //Apagar meu valor atual
-    processClearOperation(){
+    processClearOperator(){
         this.currentOperationText.innerText = "";
 }
 //Apagar tudo 
-    processClearAllOperation(){
+    processClearAllOperator(){
         this.currentOperationText.innerText ="";
         this.previousOperationText.innerText =""; 
 }
 // mostrar o resultado atual 
-    processEqualOperation(){
-        const operation = previousOperationText.innerText.split("")[1];
+    processEqualOperator(){
+        let operation = this.previousOperationText.innerText.split("")[1];
+
         this.processOperation(operation);
     }
 
@@ -149,6 +147,7 @@ buttons.forEach((btn) => {
         pois ele tem que ser número ou caractere
         basicamente: o if vai verificar se o value é n° ou caractere*/
         if(+value >= 0 || value === ".") {
+            console.log(value);
             calc.addDigit(value);
         } else {
             calc.processOperation(value);
